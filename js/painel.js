@@ -7,7 +7,11 @@ async function carregarSensores() {
 }
 
 function converterTemperatura(leitura) {
+
   return (leitura - 32) * (5 / 9);
+
+  return (leitura - 32) * 5 / 9; // alteracao do colega
+
 }
 
 function desenharLinha(sensor) {
