@@ -22,7 +22,7 @@ Dupla (M2 em diante):
 
 **Depois do push, alguem que clonar o repositorio ainda consegue ler a chave?
 Responda em duas linhas, explicando o motivo:**
-
+Sim, qualquer pessoa que clonar o repositório ainda consegue ler a chave. Isso acontece porque o Git guarda todo o histórico de alterações, permitindo que a chave continue acessível em commits antigos feitos antes da remoção do arquivo.
 ---
 
 ## M4 - Colisao
