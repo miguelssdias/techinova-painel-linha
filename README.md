@@ -1,11 +1,3 @@
-# Painel da Linha 3 - TechInova
-
-Painel web que mostra a leitura dos sensores da linha 3 da fabrica.
-
-## Como executar
-
-Abra o arquivo `index.html` no navegador. Nao precisa de servidor web.
-
-## Identificacao
-
-<!-- Escreva aqui seu nome completo e sua matricula -->
+# Painel da Linha 3
+Aluno: Miguel Santana Dias
+Matrícula: 26176306 
