@@ -33,10 +33,3 @@ Sim, qualquer pessoa que clonar o repositório ainda consegue ler a chave. Isso 
 
 
 
-## Casa - Incidente na linha 3
-
-**Hash do commit que quebrou o painel:**
-
-**Hash do commit de revert:**
-
-**Por que `git revert` e nao `git reset` neste caso:**
