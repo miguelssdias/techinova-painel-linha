@@ -25,17 +25,13 @@ Responda em duas linhas, explicando o motivo:**
 Sim, qualquer pessoa que clonar o repositório ainda consegue ler a chave. Isso acontece porque o Git guarda todo o histórico de alterações, permitindo que a chave continue acessível em commits antigos feitos antes da remoção do arquivo.
 ---
 
-## M4 - Colisao
 
-**O que significavam os marcadores que apareceram dentro do arquivo:**
+## M4. Conflito em dupla
+- Arquivo em conflito: js/painel.js
+- O conflito ocorreu porque a mesma funcao converterTemperatura foi alterada de formas diferentes na nuvem e localmente.
+- A decisao adotada foi manter a formula de conversao correta para Celsius e remover as marcacoes do Git.
 
-- `<<<<<<<` :
-- `=======` :
-- `>>>>>>>` :
 
-**Qual pedaco veio de quem, e qual titulo voces decidiram manter:**
-
----
 
 ## Casa - Incidente na linha 3
 
