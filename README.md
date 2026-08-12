@@ -1,219 +1,93 @@
-# 📊 TechInova — Painel da Linha 3
+# 🏭 TechInova - Painel de Linha
 
-Painel web desenvolvido para monitoramento das informações de sensores da **Linha 3 da TechInova**.
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-ativo-brightgreen.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-A aplicação apresenta as leituras dos sensores em uma interface simples e objetiva, permitindo visualizar o código, a descrição, a temperatura convertida para Celsius e o status de cada sensor. Os dados são carregados dinamicamente a partir de um arquivo JSON.
-
----
-
-## 🚀 Funcionalidades
-
-* 📡 Carregamento dos dados dos sensores através de arquivo JSON.
-* 🌡️ Conversão automática de temperatura de Fahrenheit para Celsius.
-* 📋 Exibição dos sensores em formato de tabela.
-* 🟢 Identificação do status dos sensores.
-* 🕐 Exibição da data e hora da última atualização.
-* ⚠️ Estrutura preparada para exibição de alertas.
-* 📁 Organização dos arquivos por responsabilidade.
+O **TechInova - Painel de Linha** é uma solução completa para monitoramento, controle e visualização em tempo real do chão de fábrica. Desenvolvido para transformar dados operacionais em insights visuais imediatos, o painel permite acompanhar o desempenho de linhas de produção, indicadores OEE, andamento de ordens de fabricação (OPs) e ocorrências de paradas de forma simples e intuitiva.
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## 📌 Sumário
 
-* **HTML5** — estrutura da aplicação.
-* **CSS3** — estilização e apresentação visual.
-* **JavaScript** — lógica, carregamento dos dados e atualização do painel.
-* **JSON** — armazenamento dos dados dos sensores.
-* **Git/GitHub** — versionamento e colaboração.
-
-O projeto utiliza uma estrutura web simples, sem dependência de frameworks ou bibliotecas externas.
+- [Visão Geral](#-visão-geral)
+- [Funcionalidades Principais](#-funcionalidades-principais)
+- [Arquitetura e Tecnologias](#-arquitetura-e-tecnologias)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Pré-requisitos](#-pré-requisitos)
+- [Instalação e Execução](#-instalação-e-execução)
+- [Variáveis de Ambiente](#-variáveis-de-ambiente)
+- [Modo TV / Kiosk](#-modo-tv--kiosk)
+- [Contribuição](#-contribuição)
+- [Licença](#-licença)
 
 ---
 
-## 📂 Estrutura do projeto
+## 👁️ Visão Geral
+
+Nas operações industriais modernas, a visibilidade em tempo real do processo produtivo é fundamental para minimizar tempos de inatividade (*downtime*) e garantir a máxima eficiência. O **Painel de Linha TechInova** foi projetado para atender tanto telas de operação e tablets de supervisão quanto grandes exibições (TVs/Monitores) no chão de fábrica, garantindo alta legibilidade e atualização contínua de dados sem necessidade de recarregar a página.
+
+---
+
+## ✨ Funcionalidades Principais
+
+- ⚡ **Monitoramento em Tempo Real**: Atualizações automáticas de status via WebSockets/Sockets sem necessidade de *refresh*.
+- 📊 **Indicadores OEE (Overall Equipment Effectiveness)**:
+  - **Disponibilidade**: Percentual de tempo em operação efetiva vs. tempo planejado.
+  - **Desempenho**: Velocidade atual de produção em relação ao ciclo padrão.
+  - **Qualidade**: Contagem de peças boas vs. refugos/retrabalhos.
+- 📋 **Gestão de Ordens de Produção (OP)**: Acompanhamento numérico e percentual da meta do turno/dia, lote atual e tempo estimado de conclusão (*ETA*).
+- 🚨 **Central de Alertas e Ocorrências**: Registro instantâneo de paradas (manutenção, falta de insumo, setup, falha de qualidade) com temporizador ativo.
+- 📺 **Otimização para Modo Kiosk (TV Industrial)**: Layout expansível, alto contraste e elementos visuais adaptados para leitura à distância.
+- 👥 **Gestão de Turnos e Operadores**: Identificação visual dos responsáveis e troca rápida de turnos.
+- 📈 **Relatórios e Histórico**: Exportação de logs de produção e gráficos de tendência por linha.
+
+---
+
+## 🛠️ Arquitetura e Tecnologias
+
+O projeto é estruturado utilizando tecnologias modernas focadas em alto desempenho e responsividade:
+
+### **Frontend & Interface**
+- **React.js / Next.js**: Biblioteca/Framework para renderização ágil de componentes.
+- **Tailwind CSS**: Estilização utilitária moderna e totalmente responsiva.
+- **Lucide Icons / Feather**: Coleção de ícones vetoriais leves.
+- **Recharts / Chart.js**: Gráficos dinâmicos para visualização de métricas e tendências.
+
+### **Backend & Comunicação em Tempo Real**
+- **Node.js (Express) / Python (FastAPI)**: Serviços de API RESTful.
+- **Socket.io / WebSockets**: Transmissão bidirecional de eventos e telemetria de sensores/CLPs em tempo real.
+
+### **Banco de Dados & Cache**
+- **PostgreSQL**: Armazenamento relacional para dados operacionais e históricos.
+- **Redis**: Gerenciamento de sessões, cache e pub/sub de mensageria instantânea.
+
+### **DevOps & Containers**
+- **Docker & Docker Compose**: Padronização dos ambientes de desenvolvimento e produção.
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```text
 techinova-painel-linha/
-│
-├── .github/
-│
-├── config/
-│   └── README.md
-│
-├── css/
-│   └── style.css
-│
-├── dados/
-│   └── sensores.json
-│
-├── js/
-│   └── painel.js
-│
-├── .gitignore
-├── index.html
-├── README.md
-└── RESPOSTAS.md
-```
-
-### Principais arquivos
-
-#### `index.html`
-
-Arquivo principal da aplicação.
-
-É responsável pela estrutura do painel, incluindo:
-
-* título do sistema;
-* tabela de sensores;
-* área de alertas;
-* informação da última atualização;
-* carregamento do JavaScript responsável pelo funcionamento do painel.
-
-#### `css/style.css`
-
-Arquivo responsável pela estilização e apresentação visual do painel.
-
-#### `js/painel.js`
-
-Contém a lógica principal da aplicação.
-
-Entre suas responsabilidades estão:
-
-* buscar os dados em `dados/sensores.json`;
-* converter as temperaturas;
-* criar dinamicamente as linhas da tabela;
-* atualizar a data e hora exibida no painel.
-
-#### `dados/sensores.json`
-
-Arquivo utilizado como fonte de dados dos sensores.
-
-Os dados são carregados pelo JavaScript através de uma requisição `fetch`.
-
-#### `config/`
-
-Diretório destinado às configurações relacionadas ao acesso ao broker. A documentação presente no projeto indica que as credenciais devem ser mantidas em um arquivo `credenciais.env`.
-
-#### `RESPOSTAS.md`
-
-Documento contendo as respostas e registros relacionados às atividades do laboratório, incluindo questões sobre Git, histórico de commits, conflitos e segurança de credenciais.
-
----
-
-## 🌡️ Conversão de temperatura
-
-As leituras recebidas pelo painel são convertidas de **Fahrenheit para Celsius** utilizando a fórmula:
-
-```text
-°C = (°F - 32) × 5/9
-```
-
-A conversão é realizada pela função `converterTemperatura()` presente no arquivo `js/painel.js`.
-
----
-
-## ▶️ Como executar
-
-Como o projeto é uma aplicação web estática, basta clonar o repositório e abrir o projeto através de um servidor local.
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/miguelssdias/techinova-painel-linha.git
-```
-
-### 2. Acesse a pasta
-
-```bash
-cd techinova-painel-linha
-```
-
-### 3. Execute com um servidor local
-
-Uma opção é utilizar o **Live Server** no Visual Studio Code.
-
-Também é possível utilizar um servidor HTTP simples, por exemplo:
-
-```bash
-python -m http.server 8000
-```
-
-Depois, acesse:
-
-```text
-http://localhost:8000
-```
-
-> Recomenda-se utilizar um servidor local porque a aplicação realiza uma requisição `fetch()` para carregar o arquivo `dados/sensores.json`.
-
----
-
-## 📊 Funcionamento
-
-O fluxo básico da aplicação é:
-
-```text
-┌──────────────────────┐
-│      index.html      │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│      painel.js       │
-└──────────┬───────────┘
-           │
-           │ fetch()
-           ▼
-┌──────────────────────┐
-│   sensores.json      │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Conversão Fahrenheit │
-│      → Celsius       │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│  Tabela de sensores  │
-└──────────────────────┘
-```
-
----
-
-## 🔐 Segurança
-
-Informações sensíveis, como credenciais de acesso a serviços externos ou brokers, **não devem ser armazenadas diretamente no código-fonte ou versionadas no Git**.
-
-O projeto possui uma pasta `config/` destinada às configurações e documenta o uso de um arquivo `credenciais.env`.
-
-Caso uma credencial tenha sido publicada acidentalmente em algum commit, apenas apagar o arquivo no commit atual **não é suficiente**, pois informações antigas podem continuar disponíveis no histórico do Git.
-
----
-
-## 🧪 Projeto acadêmico
-
-Este projeto faz parte de uma atividade prática envolvendo desenvolvimento web, manipulação de dados, Git e fluxo de colaboração em equipe.
-
-O repositório também registra atividades relacionadas a:
-
-* identificação de alterações em commits;
-* análise do histórico do Git;
-* resolução de conflitos;
-* boas práticas de segurança;
-* trabalho colaborativo utilizando Git.
-
----
-
-## 👨‍💻 Autor
-
-**Miguel Santana Dias**
-
-Projeto: **TechInova — Painel da Linha 3**
-
----
-
-## 📄 Licença
-
-Este projeto não possui uma licença open source especificada no repositório no momento.
+├── public/                  # Arquivos estáticos, favicons e assets visuais
+├── src/
+│   ├── assets/              # Imagens, estilos globais e fontes
+│   ├── components/          # Componentes Reutilizáveis
+│   │   ├── Cards/           # Cards de métricas (KPIs, OEE, Produção)
+│   │   ├── Charts/          # Componentes de gráficos interativos
+│   │   ├── Header/          # Cabeçalho com relógio, status da conexão e linha
+│   │   └── Modals/          # Modais de registro de parada e observações
+│   ├── hooks/               # Custom Hooks (ex: useWebSocket, useProductionData)
+│   ├── pages/ / app/        # Páginas e rotas da aplicação
+│   ├── services/            # Clientes HTTP (Axios) e conexão WebSocket
+│   ├── styles/              # Configurações do Tailwind e CSS global
+│   └── utils/               # Funções utilitárias e formatadores
+├── .env.example             # Modelo de variáveis de ambiente
+├── .gitignore               # Arquivos ignorados pelo Git
+├── docker-compose.yml       # Orquestração dos containers Docker
+├── Dockerfile               # Configuração da imagem de produção
+├── package.json             # Dependências e scripts do Node.js
+└── README.md                # Documentação do projeto
